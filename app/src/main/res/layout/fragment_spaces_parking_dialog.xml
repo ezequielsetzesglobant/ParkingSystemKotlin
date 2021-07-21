@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/teal_200"
+    tools:context=".fragment.SpacesParkingDialogFragment">
+
+    <TextView
+        android:id="@+id/text_view_dialog_fragment_amount_spaces"
+        style="@style/TextViewFragmentStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_view_dialog_fragment_spaces"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/edit_text_dialog_fragment_amount_spaces"
+        style="@style/EditTextFragmentStyle"
+        android:layout_width="@dimen/edit_text_view_dialog_fragment_width"
+        android:layout_height="wrap_content"
+        android:hint="@string/edit_text_set_spaces_parking_dialog_fragment"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_view_dialog_fragment_amount_spaces" />
+
+    <Button
+        android:id="@+id/button_dialog_fragment_close"
+        style="@style/ButtonFragmentStyle"
+        android:layout_width="@dimen/button_dialog_fragment_width"
+        android:layout_height="wrap_content"
+        android:text="@string/button_dialog_fragment_ok"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_text_dialog_fragment_amount_spaces" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
