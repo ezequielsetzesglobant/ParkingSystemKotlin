@@ -1,3 +1,21 @@
 <resources>
-    <string name="app_name">ParkingSystemKotlin</string>
+    <string name="app_name">ParkingSystem</string>
+
+    <string name="text_main_activity_parking">Parking space</string>
+    <string name="button_main_activity_set_spaces">Set amount of parking spaces</string>
+    <string name="button_main_activity_reservation">Make a reservation</string>
+    <string name="snack_bar_button_click_message_main_activity">Saved %1$s spaces</string>
+
+    <string name="text_view_dialog_fragment_spaces">Enter the amount of spaces in the parking</string>
+    <string name="edit_text_set_spaces_parking_dialog_fragment">Amount of spaces</string>
+    <string name="button_dialog_fragment_ok">Ok</string>
+
+    <string name="button_reservation_activity_start_date_text">Start date</string>
+    <string name="button_reservation_activity_finish_date_text">Finish date</string>
+    <string name="edit_text_reservation_activity_security_code_text">Security code</string>
+    <string name="edit_text_reservation_activity_place_text">Place</string>
+    <string name="button_reservation_activity_save_text">Save</string>
+    <string name="snack_bar_save_reservation_error_message_reservation_activity">Error loading reservation data</string>
+    <string name="toast_save_reservation_information_message_reservation_activity">Reservation information:\nStart date: %1$s\nFinish date: %2$s\nSecurity code: %3$s\nPlace: %4$s</string>
+    <string name="toast_date_and_time_ok_message_reservation_activity">Date and time saved successfully</string>
 </resources>
