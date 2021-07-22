@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">ParkingSystemKotlin</string>
+    <string name="text_main_activity_parking">Parking space</string>
+    <string name="button_main_activity_set_spaces">Set amount of parking spaces</string>
+    <string name="snack_bar_button_click_message_main_activity">Saved %1$s spaces</string>
+    <string name="text_view_dialog_fragment_spaces">Enter the amount of spaces in the parking</string>
+    <string name="edit_text_set_spaces_parking_dialog_fragment">Amount of spaces</string>
+    <string name="button_dialog_fragment_ok">Ok</string>
 </resources>
