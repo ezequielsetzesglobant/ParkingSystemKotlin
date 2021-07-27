@@ -13,7 +13,9 @@ open class ActivityView(activity: Activity) {
     val activity: Activity?
         get() = activityRef.get()
 
-    fun getContext(): Context? = activity
+    val context: Context?
+        get() = activity
 
-    fun getFragmentManager(): FragmentManager? = (activity as? AppCompatActivity)?.supportFragmentManager
+    val fragmentManager: FragmentManager?
+        get() = (activity as? AppCompatActivity)?.supportFragmentManager
 }

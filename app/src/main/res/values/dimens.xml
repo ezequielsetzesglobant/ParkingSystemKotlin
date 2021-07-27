@@ -3,9 +3,13 @@
     <dimen name="text_view_main_activity_text_size">35sp</dimen>
     <dimen name="text_view_main_activity_margin_top">30dp</dimen>
 
-    <dimen name="button_main_activity_text_size">20sp</dimen>
-    <dimen name="button_main_margin_top_big">40dp</dimen>
-    <dimen name="button_main_activity_margin_horizontal">10dp</dimen>
+    <dimen name="button_set_amount_spaces_main_activity_text_size">20sp</dimen>
+    <dimen name="button_set_amount_spaces_main_activity_margin_top">40dp</dimen>
+    <dimen name="button_set_amount_spaces_main_activity_margin_horizontal">10dp</dimen>
+
+    <dimen name="button_reservation_main_activity_text_size">20sp</dimen>
+    <dimen name="button_reservation_main_activity_margin_top">40dp</dimen>
+    <dimen name="button_reservation_main_activity_margin_horizontal">40dp</dimen>
 
     <dimen name="text_view_dialog_fragment_text_size">30sp</dimen>
 
@@ -17,4 +21,13 @@
     <dimen name="button_dialog_fragment_margin_top">20dp</dimen>
     <dimen name="button_dialog_fragment_margin_horizontal">10dp</dimen>
     <dimen name="button_dialog_fragment_width">0dp</dimen>
+
+    <dimen name="button_reservation_activity_text_size">20sp</dimen>
+    <dimen name="button_reservation_activity_margin_top">40dp</dimen>
+    <dimen name="button_reservation_activity_margin_horizontal">40dp</dimen>
+    <dimen name="button_reservation_activity_margin_bottom">40dp</dimen>
+
+    <dimen name="edit_text_reservation_activity_text_size">20sp</dimen>
+    <dimen name="edit_text_reservation_activity_margin_top">40dp</dimen>
+    <dimen name="edit_text_reservation_activity_margin_horizontal">40dp</dimen>
 </resources>

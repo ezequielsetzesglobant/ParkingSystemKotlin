@@ -12,10 +12,12 @@ interface ParkingContract {
     interface Presenter {
         fun onSetParkingPlacesButtonPressed(spaces: Int)
         fun inflateDialog(listenerDialogFragment: ListenerDialogFragment)
+        fun onReservationButtonClicked()
     }
 
     interface View {
         fun showPopUp(spaces: Int)
         fun showDialog(listenerDialogFragment: ListenerDialogFragment)
+        fun openReservationScreen()
     }
 }

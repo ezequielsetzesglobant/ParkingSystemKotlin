@@ -27,7 +27,12 @@ class SpacesParkingDialogFragment : DialogFragment() {
         super.onViewCreated(view, savedInstanceState)
         presenter = SpacesParkingDialogPresenter(SpacesParkingDialogModel(), SpacesParkingDialogView(this, binding))
         listenerDialogFragment = arguments?.getSerializable(LISTENER_KEY) as ListenerDialogFragment
-        binding.buttonDialogFragmentClose.setOnClickListener { presenter.notifyActivity(listenerDialogFragment, binding.editTextDialogFragmentAmountSpaces.text.toString()) }
+        binding.buttonDialogFragmentClose.setOnClickListener {
+            presenter.notifyActivity(
+                listenerDialogFragment,
+                binding.editTextDialogFragmentAmountSpaces.text.toString()
+            )
+        }
     }
 
     companion object {

@@ -32,6 +32,14 @@ class ParkingPresenterTest {
         verify(view).showDialog(listener)
     }
 
+    @Test
+    fun `on reservation button clicked test`() {
+        //Execute
+        presenter.onReservationButtonClicked()
+        //Assert
+        verify(view).openReservationScreen()
+    }
+
     companion object {
         private const val FIVE_INT = 5
     }

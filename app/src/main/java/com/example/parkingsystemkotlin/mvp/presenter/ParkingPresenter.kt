@@ -13,4 +13,8 @@ class ParkingPresenter(private val model: ParkingContract.Model, private val vie
     override fun inflateDialog(listenerDialogFragment: ListenerDialogFragment) {
         view.showDialog(listenerDialogFragment)
     }
+
+    override fun onReservationButtonClicked() {
+        view.openReservationScreen()
+    }
 }

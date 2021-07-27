@@ -14,10 +14,18 @@
 
     <Button
         android:id="@+id/button_main_set_amount_parking_spaces"
-        style="@style/ButtonMainStyle"
+        style="@style/ButtonSetAmountSpacesMainStyle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/button_main_activity_set_spaces"
         app:layout_constraintTop_toBottomOf="@id/text_main_parking_title" />
+
+    <Button
+        android:id="@+id/button_main_reservation"
+        style="@style/ButtonReservationMainStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_main_activity_reservation"
+        app:layout_constraintTop_toBottomOf="@id/button_main_set_amount_parking_spaces" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

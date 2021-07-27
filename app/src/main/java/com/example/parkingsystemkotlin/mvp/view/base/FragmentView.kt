@@ -1,6 +1,5 @@
 package com.example.parkingsystemkotlin.mvp.view.base
 
-import android.content.Context
 import androidx.fragment.app.Fragment
 import java.lang.ref.WeakReference
 
@@ -10,6 +9,4 @@ open class FragmentView(fragment: Fragment) {
 
     val fragment: Fragment?
         get() = fragmentRef.get()
-
-    fun getContext(): Context? = fragment?.context
 }

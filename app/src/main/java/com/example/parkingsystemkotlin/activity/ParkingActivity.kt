@@ -1,5 +1,7 @@
 package com.example.parkingsystemkotlin.activity
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.parkingsystemkotlin.databinding.ActivityParkingBinding
@@ -22,9 +24,14 @@ class ParkingActivity : AppCompatActivity(), ListenerDialogFragment {
         presenter = ParkingPresenter(ParkingModel(), ParkingView(this, binding))
 
         binding.buttonMainSetAmountParkingSpaces.setOnClickListener { presenter.inflateDialog(this) }
+        binding.buttonMainReservation.setOnClickListener { presenter.onReservationButtonClicked() }
     }
 
     override fun setAmountSpaces(spaces: Int) {
         presenter.onSetParkingPlacesButtonPressed(spaces)
+    }
+
+    companion object {
+        fun getIntent(context: Context): Intent = Intent(context, ReservationActivity::class.java)
     }
 }
