@@ -30,4 +30,14 @@
     <dimen name="edit_text_reservation_activity_text_size">20sp</dimen>
     <dimen name="edit_text_reservation_activity_margin_top">40dp</dimen>
     <dimen name="edit_text_reservation_activity_margin_horizontal">40dp</dimen>
+
+    <dimen name="recycler_recycler_activity_margin_bottom">60dp</dimen>
+    <dimen name="recycler_view_recycler_activity_margin_bottom">20dp</dimen>
+    <dimen name="button_recycler_activity_text_size">20sp</dimen>
+    <dimen name="button_recycler_activity_margin_top">20dp</dimen>
+    <dimen name="button_recycler_activity_margin_bottom">10dp</dimen>
+
+    <dimen name="text_view_item_recycler_view_size">15sp</dimen>
+    <dimen name="constraint_layout_item_recycler_view_margin_horizontal">5dp</dimen>
+    <dimen name="constraint_layout_item_recycler_view_margin_top">5dp</dimen>
 </resources>

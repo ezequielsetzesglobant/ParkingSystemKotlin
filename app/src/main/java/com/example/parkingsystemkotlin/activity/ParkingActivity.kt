@@ -1,13 +1,12 @@
 package com.example.parkingsystemkotlin.activity
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.parkingsystemkotlin.databinding.ActivityParkingBinding
 import com.example.parkingsystemkotlin.listener.ListenerDialogFragment
 import com.example.parkingsystemkotlin.mvp.contract.ParkingContract
 import com.example.parkingsystemkotlin.mvp.model.ParkingModel
+import com.example.parkingsystemkotlin.mvp.model.reservation.ReservationInformationDB
 import com.example.parkingsystemkotlin.mvp.presenter.ParkingPresenter
 import com.example.parkingsystemkotlin.mvp.view.ParkingView
 
@@ -21,18 +20,15 @@ class ParkingActivity : AppCompatActivity(), ListenerDialogFragment {
         binding = ActivityParkingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        presenter = ParkingPresenter(ParkingModel(), ParkingView(this, binding))
+        presenter = ParkingPresenter(ParkingModel(ReservationInformationDB), ParkingView(this, binding))
 
         binding.buttonMainSetAmountParkingSpaces.setOnClickListener { presenter.inflateDialog(this) }
         binding.buttonMainReservation.setOnClickListener { presenter.onReservationButtonClicked() }
         binding.buttonMainRealeseParking.setOnClickListener { presenter.onReleaseParkingButtonClicked() }
+        binding.buttonMainSeeAllReservations.setOnClickListener { presenter.onSeeAllReservationsButtonClicked() }
     }
 
     override fun setAmountSpaces(spaces: Int) {
         presenter.onSetParkingPlacesButtonPressed(spaces)
-    }
-
-    companion object {
-        fun getIntent(context: Context): Intent = Intent(context, ReservationActivity::class.java)
     }
 }

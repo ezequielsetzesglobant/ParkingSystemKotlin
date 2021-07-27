@@ -15,7 +15,7 @@ class ParkingPresenterTest {
 
     private val listener: ListenerDialogFragment = mock()
     private val view: ParkingContract.View = mock()
-    private val model: ParkingContract.Model = ParkingModel()
+    private val model: ParkingContract.Model = ParkingModel(ReservationInformationDB)
     private val presenter: ParkingContract.Presenter = ParkingPresenter(model, view)
     var reservation: Reservation = Reservation(
         getCalendarDate(YEAR_START, MONTH_START, DAY_OF_MONTH_START, HOUR_START, MINUTE_START),
@@ -53,7 +53,7 @@ class ParkingPresenterTest {
     }
 
     @Test
-    fun onReleaseParkingButtonClickedTest() {
+    fun `on release parking button clicked test`() {
         //Setup
         makeReservation()
         //Execute
@@ -61,6 +61,14 @@ class ParkingPresenterTest {
         //Assert
         verify(view).showAmountOfReservationsReleased(ONE_INT)
         assertEquals(ZERO_INT, model.releaseParking())
+    }
+
+    @Test
+    fun `on see all reservations button clicked test`() {
+        //Execute
+        presenter.onSeeAllReservationsButtonClicked()
+        //Assert
+        verify(view).openAllReservationsScreen()
     }
 
     private fun makeReservation() {

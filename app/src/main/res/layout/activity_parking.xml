@@ -36,4 +36,12 @@
         android:text="@string/button_main_activity_realese"
         app:layout_constraintTop_toBottomOf="@id/button_main_reservation" />
 
+    <Button
+        android:id="@+id/button_main_see_all_reservations"
+        style="@style/ButtonReservationMainStyle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/button_main_activity_see_reservations"
+        app:layout_constraintTop_toBottomOf="@id/button_main_realese_parking" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
