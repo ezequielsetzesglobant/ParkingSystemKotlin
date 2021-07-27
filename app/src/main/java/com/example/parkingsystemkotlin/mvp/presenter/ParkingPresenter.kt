@@ -15,6 +15,11 @@ class ParkingPresenter(private val model: ParkingContract.Model, private val vie
     }
 
     override fun onReservationButtonClicked() {
+        model.releaseParking()
         view.openReservationScreen()
+    }
+
+    override fun onReleaseParkingButtonClicked() {
+        view.showAmountOfReservationsReleased(model.releaseParking())
     }
 }

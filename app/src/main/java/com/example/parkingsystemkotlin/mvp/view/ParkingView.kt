@@ -30,6 +30,15 @@ class ParkingView(activity: Activity, private val binding: ActivityParkingBindin
         activity?.startActivity(context?.let { ParkingActivity.getIntent(it) })
     }
 
+    override fun showAmountOfReservationsReleased(releasedReservations: Int) {
+        context?.let {
+            it.snackbar(
+                binding.root,
+                it.getString(R.string.snack_bar_released_reservations_message_main_activity, releasedReservations.toString())
+            )
+        }
+    }
+
     companion object {
         private const val TAG: String = "SPACES_PARKING_FRAGMENT"
     }

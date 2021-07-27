@@ -9,10 +9,10 @@ import com.example.parkingsystemkotlin.mvp.model.reservation.Reservation
 import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import com.nhaarman.mockito_kotlin.whenever
+import java.util.Calendar
 import org.junit.Assert.assertEquals
 import org.junit.Before
 import org.junit.Test
-import java.util.Calendar
 
 class ReservationPresenterTest {
 
@@ -46,6 +46,7 @@ class ReservationPresenterTest {
         EMPTY_STRING,
         EMPTY_STRING
     )
+    private val reservationsToPlace: MutableList<Reservation> = mutableListOf()
 
     @Before
     fun setup() {
@@ -79,7 +80,14 @@ class ReservationPresenterTest {
         //Execute
         presenter.saveReservationTime(HOUR_OF_DAY_START, MINUTE_START)
         //Assert
-        verify(view).showOkDateAndTime()
+        verify(view).showOkDateAndTime(model.getSavedDateAndTime())
+        val reservation = Reservation(
+            getCalendarDate(YEAR_START, MONTH_START, DAY_OF_MONTH_START, ReservationPresenterTest.HOUR_OF_DAY_START, MINUTE_START),
+            Calendar.getInstance(),
+            EMPTY_STRING,
+            EMPTY_STRING
+        )
+        assertEquals(reservation.getStartDateAndTimeFormated(), model.getSavedDateAndTime())
     }
 
     @Test
@@ -132,6 +140,34 @@ class ReservationPresenterTest {
         )
     }
 
+    @Test
+    fun saveReservationInformationWithOverlapReservationTest() {
+        //Setup
+        whenever(reservationInformationDB.getReservationDB(PLACE, SECURITY_CODE)).thenReturn(reservation)
+        reservationsToPlace.add(reservation)
+        whenever(reservationInformationDB.getReservationsDB(PLACE)).thenReturn(reservationsToPlace)
+        saveReservationDateTime()
+        //Execute
+        presenter.saveReservationInformation(SECURITY_CODE, PLACE)
+        //Assert
+        verify(view).showOverlapMessage()
+        assertEqualsReservationFields(
+            YEAR_START,
+            MONTH_START,
+            DAY_OF_MONTH_START,
+            HOUR_OF_DAY_START,
+            MINUTE_START,
+            YEAR_FINISH,
+            MONTH_FINISH,
+            DAY_OF_MONTH_FINISH,
+            HOUR_OF_DAY_FINISH,
+            MINUTE_FINISH,
+            SECURITY_CODE,
+            PLACE,
+            model.getReservation(PLACE, SECURITY_CODE)
+        )
+    }
+
     private fun getCalendarDate(year: Int, month: Int, dayOfMonth: Int, hourOfDay: Int, minute: Int): Calendar {
         val calendar: Calendar = Calendar.getInstance()
         calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
@@ -140,6 +176,15 @@ class ReservationPresenterTest {
         calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
         calendar.set(Calendar.MINUTE, minute)
         return calendar
+    }
+
+    private fun saveReservationDateTime() {
+        presenter.createDate(listenerDate, true)
+        presenter.saveReservationDate(YEAR_START, MONTH_START, DAY_OF_MONTH_START, listenerTime)
+        presenter.saveReservationTime(HOUR_OF_DAY_START, MINUTE_START)
+        presenter.createDate(listenerDate, false)
+        presenter.saveReservationDate(YEAR_FINISH, MONTH_FINISH, DAY_OF_MONTH_FINISH, listenerTime)
+        presenter.saveReservationTime(ReservationPresenterTest.HOUR_OF_DAY_FINISH, MINUTE_FINISH)
     }
 
     private fun assertEqualsReservationFields(

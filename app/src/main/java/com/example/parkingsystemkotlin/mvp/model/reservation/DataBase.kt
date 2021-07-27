@@ -7,4 +7,5 @@ interface DataBase {
     fun getReservationsDB(place: String): MutableList<Reservation>
     fun putReservationDB(startDateAndTime: Calendar, finishDateAndTime: Calendar, securityCode: String, place: String)
     fun getReservationDB(place: String, securityCode: String): Reservation
+    fun releasePastReservations(): Int
 }

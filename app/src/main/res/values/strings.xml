@@ -5,6 +5,8 @@
     <string name="button_main_activity_set_spaces">Set amount of parking spaces</string>
     <string name="button_main_activity_reservation">Make a reservation</string>
     <string name="snack_bar_button_click_message_main_activity">Saved %1$s spaces</string>
+    <string name="button_main_activity_realese">Release reservations from past dates</string>
+    <string name="snack_bar_released_reservations_message_main_activity">Released reservations: %1$s</string>
 
     <string name="text_view_dialog_fragment_spaces">Enter the amount of spaces in the parking</string>
     <string name="edit_text_set_spaces_parking_dialog_fragment">Amount of spaces</string>
@@ -17,5 +19,6 @@
     <string name="button_reservation_activity_save_text">Save</string>
     <string name="snack_bar_save_reservation_error_message_reservation_activity">Error loading reservation data</string>
     <string name="toast_save_reservation_information_message_reservation_activity">Reservation information:\nStart date: %1$s\nFinish date: %2$s\nSecurity code: %3$s\nPlace: %4$s</string>
-    <string name="toast_date_and_time_ok_message_reservation_activity">Date and time saved successfully</string>
+    <string name="toast_date_and_time_ok_message_reservation_activity">Date and time: %1$s</string>
+    <string name="snack_bar_overlap_message_reservation_activity">Overlapped reservations</string>
 </resources>

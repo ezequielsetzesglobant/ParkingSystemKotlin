@@ -9,9 +9,10 @@ interface ReservationContract {
     interface ReservationModelContract {
         fun saveDate(year: Int, month: Int, dayOfMonth: Int)
         fun saveTime(hourOfDay: Int, minute: Int)
-        fun saveReservation(securityCode: String, place: String)
+        fun saveReservation(securityCode: String, place: String): String
         fun getReservation(place: String, securityCode: String): Reservation
         fun setStartDateAndTime(startDateAndTime: Boolean)
+        fun getSavedDateAndTime(): String
     }
 
     interface ReservationPresenterContract {
@@ -26,6 +27,7 @@ interface ReservationContract {
         fun showTimePicker(onTimeSetListener: TimePickerDialog.OnTimeSetListener)
         fun finishActivity(reservation: Reservation)
         fun showError()
-        fun showOkDateAndTime()
+        fun showOkDateAndTime(savedDateAndTime: String)
+        fun showOverlapMessage()
     }
 }

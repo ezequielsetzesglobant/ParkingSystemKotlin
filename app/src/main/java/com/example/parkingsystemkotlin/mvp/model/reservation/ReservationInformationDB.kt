@@ -1,6 +1,7 @@
 package com.example.parkingsystemkotlin.mvp.model.reservation
 
 import java.util.Calendar
+import java.util.Locale
 
 object ReservationInformationDB : DataBase {
 
@@ -11,24 +12,25 @@ object ReservationInformationDB : DataBase {
     private const val MINUTE_START_AND_FINISH = 0
     private const val SECURITY_CODE = ""
     private const val PLACE = ""
+    private const val ZERO_INT = 0
 
-    private var reservationInfomation: MutableMap<String, MutableList<Reservation>> = mutableMapOf()
+    private var reservations: MutableMap<String, MutableList<Reservation>> = mutableMapOf()
 
-    override fun getReservationsDB(place: String): MutableList<Reservation> = reservationInfomation[place] ?: mutableListOf()
+    override fun getReservationsDB(place: String): MutableList<Reservation> = reservations[place] ?: mutableListOf()
 
     override fun putReservationDB(startDateAndTime: Calendar, finishDateAndTime: Calendar, securityCode: String, place: String) {
         val reservation = Reservation(startDateAndTime, finishDateAndTime, securityCode, place)
-        if (reservationInfomation.containsKey(place)) {
-            reservationInfomation[place]?.add(reservation)
+        if (reservations.containsKey(place)) {
+            reservations[place]?.add(reservation)
         } else {
             val reservationsList: MutableList<Reservation> = mutableListOf()
             reservationsList.add(reservation)
-            reservationInfomation[reservation.place] = reservationsList
+            reservations[reservation.place] = reservationsList
         }
     }
 
     override fun getReservationDB(place: String, securityCode: String): Reservation {
-        reservationInfomation[place]?.forEach {
+        reservations[place]?.forEach {
             if (it.securityCode.equals(securityCode)) {
                 return it
             }
@@ -51,6 +53,23 @@ object ReservationInformationDB : DataBase {
             SECURITY_CODE,
             PLACE
         )
+    }
+
+    override fun releasePastReservations(): Int {
+        var releasedReservations: Int = ZERO_INT
+        if (reservations.isNotEmpty()) {
+            reservations.forEach { reservation ->
+                releasedReservations += deleteReservations(reservation.key)
+            }
+        }
+        return releasedReservations
+    }
+
+    private fun deleteReservations(key: String): Int {
+        val calendar = Calendar.getInstance(Locale.getDefault())
+        var list: MutableList<Reservation>? = reservations[key]
+        reservations[key] = list?.filter { it.finishDateAndTime.after(calendar) } as MutableList<Reservation>
+        return list.filter { it.finishDateAndTime.before(calendar) }.size
     }
 
     private fun getCalendarDate(year: Int, month: Int, dayOfMonth: Int, hourOfDay: Int, minute: Int): Calendar {

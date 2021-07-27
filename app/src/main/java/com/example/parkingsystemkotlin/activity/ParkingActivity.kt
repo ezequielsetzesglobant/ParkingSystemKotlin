@@ -25,6 +25,7 @@ class ParkingActivity : AppCompatActivity(), ListenerDialogFragment {
 
         binding.buttonMainSetAmountParkingSpaces.setOnClickListener { presenter.inflateDialog(this) }
         binding.buttonMainReservation.setOnClickListener { presenter.onReservationButtonClicked() }
+        binding.buttonMainRealeseParking.setOnClickListener { presenter.onReleaseParkingButtonClicked() }
     }
 
     override fun setAmountSpaces(spaces: Int) {

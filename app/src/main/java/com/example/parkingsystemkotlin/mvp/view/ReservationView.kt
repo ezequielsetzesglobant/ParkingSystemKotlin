@@ -60,9 +60,15 @@ class ReservationView(activity: Activity, private val binding: ActivityReservati
         }
     }
 
-    override fun showOkDateAndTime() {
+    override fun showOkDateAndTime(savedDateAndTime: String) {
         activity?.let {
-            it.toast(it.getString(R.string.toast_date_and_time_ok_message_reservation_activity))
+            it.toast(it.getString(R.string.toast_date_and_time_ok_message_reservation_activity, savedDateAndTime))
+        }
+    }
+
+    override fun showOverlapMessage() {
+        context?.let {
+            it.snackbar(binding.getRoot(), it.getString(R.string.snack_bar_overlap_message_reservation_activity))
         }
     }
 }
