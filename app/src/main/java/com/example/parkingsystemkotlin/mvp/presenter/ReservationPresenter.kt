@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import com.example.parkingsystemkotlin.mvp.contract.ReservationContract
 import com.example.parkingsystemkotlin.mvp.model.reservation.Reservation
+import com.example.parkingsystemkotlin.utils.ConstantUtils
 
 class ReservationPresenter(
     private val model: ReservationContract.ReservationModelContract,
@@ -22,16 +23,14 @@ class ReservationPresenter(
 
     override fun saveReservationTime(hourOfDay: Int, minute: Int) {
         model.saveTime(hourOfDay, minute)
-        view.showOkDateAndTime()
+        view.showOkDateAndTime(model.getSavedDateAndTime())
     }
 
     override fun saveReservationInformation(securityCode: String, place: String) {
-        model.saveReservation(securityCode, place)
-        val reservation: Reservation = model.getReservation(place, securityCode)
-        if (reservation.isNotEmpty()) {
-            view.finishActivity(reservation)
-        } else {
-            view.showError()
+        when (model.saveReservation(securityCode, place)) {
+            ConstantUtils.INVALID_FIELDS -> view.showError()
+            ConstantUtils.SAVE_RESERVATION -> view.finishActivity(model.getReservation(place, securityCode))
+            else -> view.showOverlapMessage()
         }
     }
 }
