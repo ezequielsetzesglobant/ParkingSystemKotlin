@@ -7,6 +7,7 @@
     <string name="snack_bar_button_click_message_main_activity">Saved %1$s spaces</string>
     <string name="button_main_activity_realese">Release reservations from past dates</string>
     <string name="snack_bar_released_reservations_message_main_activity">Released reservations: %1$s</string>
+    <string name="button_main_activity_see_reservations">See all reservations</string>
 
     <string name="text_view_dialog_fragment_spaces">Enter the amount of spaces in the parking</string>
     <string name="edit_text_set_spaces_parking_dialog_fragment">Amount of spaces</string>
@@ -21,4 +22,12 @@
     <string name="toast_save_reservation_information_message_reservation_activity">Reservation information:\nStart date: %1$s\nFinish date: %2$s\nSecurity code: %3$s\nPlace: %4$s</string>
     <string name="toast_date_and_time_ok_message_reservation_activity">Date and time: %1$s</string>
     <string name="snack_bar_overlap_message_reservation_activity">Overlapped reservations</string>
+
+    <string name="text_item_recycler_view">Information of the reservation</string>
+    <string name="button_back_recycler_activity_text">Back</string>
+
+    <string name="text_view_reservation_start_date_message_item_recycler_view">START DATE: %1$s</string>
+    <string name="text_view_reservation_finish_date_message_item_recycler_view">FINISH DATE: %1$s</string>
+    <string name="text_view_reservation_security_code_message_item_recycler_view">SECURITY CODE: %1$s</string>
+    <string name="text_view_reservation_place_message_item_recycler_view">PLACE: %1$s</string>
 </resources>

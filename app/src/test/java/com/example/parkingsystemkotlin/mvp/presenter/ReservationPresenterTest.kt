@@ -82,7 +82,7 @@ class ReservationPresenterTest {
         //Assert
         verify(view).showOkDateAndTime(model.getSavedDateAndTime())
         val reservation = Reservation(
-            getCalendarDate(YEAR_START, MONTH_START, DAY_OF_MONTH_START, ReservationPresenterTest.HOUR_OF_DAY_START, MINUTE_START),
+            getCalendarDate(YEAR_START, MONTH_START, DAY_OF_MONTH_START, HOUR_OF_DAY_START, MINUTE_START),
             Calendar.getInstance(),
             EMPTY_STRING,
             EMPTY_STRING
@@ -118,6 +118,12 @@ class ReservationPresenterTest {
     @Test
     fun `save reservation information with reservation ok test`() {
         //Setup
+        presenter.createDate(listenerDate, true)
+        presenter.saveReservationDate(YEAR_START, MONTH_START, DAY_OF_MONTH_START, listenerTime)
+        presenter.saveReservationTime(HOUR_OF_DAY_START, MINUTE_START)
+        presenter.createDate(listenerDate, false)
+        presenter.saveReservationDate(YEAR_FINISH, MONTH_FINISH, DAY_OF_MONTH_FINISH, listenerTime)
+        presenter.saveReservationTime(HOUR_OF_DAY_FINISH, MINUTE_FINISH)
         whenever(reservationInformationDB.getReservationDB(PLACE, SECURITY_CODE)).thenReturn(reservation)
         //Execute
         presenter.saveReservationInformation(SECURITY_CODE, PLACE)

@@ -2,6 +2,8 @@ package com.example.parkingsystemkotlin.activity
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.widget.DatePicker
 import android.widget.TimePicker
@@ -42,5 +44,9 @@ class ReservationActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListe
 
     override fun onTimeSet(view: TimePicker?, hourOfDay: Int, minute: Int) {
         presenter.saveReservationTime(hourOfDay, minute)
+    }
+
+    companion object {
+        fun getIntent(context: Context): Intent = Intent(context, ReservationActivity::class.java)
     }
 }

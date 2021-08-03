@@ -15,6 +15,7 @@ interface ParkingContract {
         fun inflateDialog(listenerDialogFragment: ListenerDialogFragment)
         fun onReservationButtonClicked()
         fun onReleaseParkingButtonClicked()
+        fun onSeeAllReservationsButtonClicked()
     }
 
     interface View {
@@ -22,5 +23,6 @@ interface ParkingContract {
         fun showDialog(listenerDialogFragment: ListenerDialogFragment)
         fun openReservationScreen()
         fun showAmountOfReservationsReleased(releasedReservations: Int)
+        fun openAllReservationsScreen()
     }
 }

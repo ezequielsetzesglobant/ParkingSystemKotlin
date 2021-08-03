@@ -65,9 +65,18 @@ object ReservationInformationDB : DataBase {
         return releasedReservations
     }
 
+    override fun isOverlap(startDateAndTime: Calendar, finishDateAndTime: Calendar, place: String) =
+        reservations[place]?.filter { (startDateAndTime.after(it.finishDateAndTime) || finishDateAndTime.before(it.startDateAndTime)).not() }?.size ?: 0 > 0
+
+    override fun getAllReservations(): MutableList<Reservation> {
+        val reservationsList: MutableList<Reservation> = mutableListOf()
+        reservations.forEach { reservation -> reservationsList.addAll(reservation.value) }
+        return reservationsList
+    }
+
     private fun deleteReservations(key: String): Int {
         val calendar = Calendar.getInstance(Locale.getDefault())
-        var list: MutableList<Reservation>? = reservations[key]
+        val list = reservations[key]
         reservations[key] = list?.filter { it.finishDateAndTime.after(calendar) } as MutableList<Reservation>
         return list.filter { it.finishDateAndTime.before(calendar) }.size
     }
